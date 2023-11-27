@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  workload = "bigbank"
+  workload = "healthcare"
 }
 
 resource "azurerm_resource_group" "default" {
@@ -29,4 +29,9 @@ resource "azurerm_log_analytics_workspace" "default" {
   resource_group_name = azurerm_resource_group.default.name
   sku                 = "PerGB2018"
   retention_in_days   = 30
+}
+
+module "sentinel" {
+  source       = "./modules/sentinel"
+  workspace_id = azurerm_log_analytics_workspace.default.id
 }

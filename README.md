@@ -1,4 +1,13 @@
-# azure-sentinel
+# Azure Sentinel
+
+```sh
+terraform init
+terraform apply -auto-approve
+```
+
+The scripts will provision and onboard a Log Analytics Workspace into Azure Sentinel.
+
+
 
 Workspace architecture options and log analytics workspace dependency.
 
