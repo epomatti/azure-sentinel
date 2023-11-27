@@ -24,7 +24,7 @@ module "vnet" {
 }
 
 resource "azurerm_log_analytics_workspace" "default" {
-  name                = "log-${local.workload}"
+  name                = "log-${local.workload}2"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   sku                 = "PerGB2018"
@@ -34,4 +34,7 @@ resource "azurerm_log_analytics_workspace" "default" {
 module "sentinel" {
   source       = "./modules/sentinel"
   workspace_id = azurerm_log_analytics_workspace.default.id
+
+  threat_intelligence_indicator_pattern           = var.threat_intelligence_indicator_pattern
+  threat_intelligence_indicator_validate_from_utc = var.threat_intelligence_indicator_validate_from_utc
 }

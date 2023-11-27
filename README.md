@@ -35,23 +35,21 @@ To view the watchlist, simply select it and use the `View in logs` button:
 _GetWatchlist('HighValueHosts')
 ```
 
-## Threat Intelligence
+## Threat Indicator / Intelligence
 
+A default `domain-name` threat indicator  with threat type `malicious-activity` will be created.
 
+You may modify the indicator, such as confidence threshold and kills chains.
 
+To query it using KQL:
 
+```sql
+`ThreatIntelligenceIndicator | project DomainName`
+```
 
+## Retention
 
-Threat indicator / Threat intelligence (Blade)
--- domain-name (types) ...
--- enter the domain .. contoso.com
-Threat type "malicious-activity"
--- name same as the domain
-
-now go to logs... and KQL `ThreatIntelligenceIndicator | project DomainName`
-
-
-Retention... SecurityEvent table on logs
+Retention configuration can be managed in the `SecurityEvent` table within the Log Analytics workspace.
 
 
 Workspace architecture options and log analytics workspace dependency.
