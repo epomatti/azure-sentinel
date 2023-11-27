@@ -66,11 +66,17 @@ Retention configuration can be managed in the `SecurityEvent` table within the L
 
 ## Windows Host Security
 
-In this example, install the `Windows Security Events` connector in Sentinel. Setup will be done using AMA.
+For this example:
 
-Add a data collection rule (DCR) set it under Basics.
+1. Install the `Windows Security Events` connector in Sentinel.
+2. Setup the connector will be done using the AMA option.
+3. Add a data collection rule (DCR) set it under Basics.
+4. Add the VM to the rule.
+5. Select `All security events`.
 
-Add the VM to the rule. Select `All security events`.
+It is also possible to collect [Sysmon][2] events via the `Security Events` connector.
+
+There is also the legacy agent, not covered here.
 
 ## Architecture
 
@@ -82,3 +88,4 @@ https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-
 - Workspace manager
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
+[2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
