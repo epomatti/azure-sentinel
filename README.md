@@ -9,6 +9,8 @@ terraform apply -auto-approve
 
 The scripts will provision and onboard a Log Analytics Workspace into Azure Sentinel.
 
+Data connectors need to be enabled and configured manually. Optionally follow [this][1] reference.
+
 
 ## Watchlist
 
@@ -47,11 +49,36 @@ To query it using KQL:
 `ThreatIntelligenceIndicator | project DomainName`
 ```
 
+## Connectors
+
+Microsoft services connectors:
+
+- Microsoft 365 (formerly Office) 365 - Data is stored in the `OfficeActivity` table.
+- Azure Active Directory (being renamed to Microsoft Entra ID) - Activate Audit and Sign-in in the configurations
+- Microsoft Entra ID Protection - Table is `SecurityAlert`. Auto-creation o incidents is supported
+- Azure Activity - Azure Resource Manager operational data, service health events, write operations taken on the resources in your subscription, and the status of activities performed in Azure.
+
+Install each of these connectors and enable the features in each of them.
+
 ## Retention
 
 Retention configuration can be managed in the `SecurityEvent` table within the Log Analytics workspace.
 
+## Windows Host Security
+
+In this example, install the `Windows Security Events via AMA` connector in Sentinel.
+
+Add a data collection rule (DCR) set it under Basics.
+
+Add the VM to the rule. Select `All security events`.
+
+## Architecture
 
 Workspace architecture options and log analytics workspace dependency.
 
 https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/2-plan-for-azure-sentinel-workspace
+
+- Lighthouse
+- Workspace manager
+
+[1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/

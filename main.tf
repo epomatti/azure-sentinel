@@ -31,6 +31,15 @@ resource "azurerm_log_analytics_workspace" "default" {
   retention_in_days   = 30
 }
 
+module "vm_windows" {
+  source              = "./modules/vm/windows"
+  workload            = local.workload
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+  subnet_id           = module.vnet.subnet_id
+  size                = var.vm_windows_size
+}
+
 module "sentinel" {
   source       = "./modules/sentinel"
   workspace_id = azurerm_log_analytics_workspace.default.id

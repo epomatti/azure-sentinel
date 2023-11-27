@@ -10,3 +10,7 @@ variable "threat_intelligence_indicator_pattern" {
 variable "threat_intelligence_indicator_validate_from_utc" {
   type = string
 }
+
+variable "vm_windows_size" {
+  type = string
+}
