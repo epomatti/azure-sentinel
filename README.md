@@ -66,7 +66,7 @@ Retention configuration can be managed in the `SecurityEvent` table within the L
 
 ## Windows Host Security
 
-In this example, install the `Windows Security Events via AMA` connector in Sentinel.
+In this example, install the `Windows Security Events` connector in Sentinel. Setup will be done using AMA.
 
 Add a data collection rule (DCR) set it under Basics.
 
