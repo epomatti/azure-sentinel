@@ -78,6 +78,51 @@ It is also possible to collect [Sysmon][2] events via the `Security Events` conn
 
 There is also the legacy agent, not covered here.
 
+## Data Analysis
+
+This view will show the rules templates associated with the enabled connectors.
+
+The Azure Activity data connector should be enabled and with Policy Assignment to it, and the primary log analytics workspace is selected.
+
+Make sure you also tick the remediation task checkbox. If using managed identity, confirm the location.
+
+## Analytical Rules
+
+There are many [types][3] of rules.
+
+Fusion is enabled by default and cannot be customized.
+
+> ⚠️ Fusion requires multiple data connectors and additional setup. Check the documentation.
+
+Microsoft Sentinel Analytics includes built-in machine learning behavior analytics rules. You can't edit these built-in rules or review the rule settings.
+
+## Microsoft Security
+
+You can [configure][3] the following security solutions to pass their alerts to Microsoft Sentinel:
+
+- Microsoft Defender for Cloud Apps
+- Microsoft Defender for Server
+- Microsoft Defender for IoT
+- Microsoft Defender for Identity
+- Microsoft Defender for Office 365
+- Microsoft Entra ID Protection
+- Microsoft Defender for Endpoint
+
+## Scheduled Rule
+
+Create a sample scheduled rule:
+
+```sql
+AzureActivity
+| where OperationName == "MICROSOFT.COMPUTE/VIRTUALMACHINES/WRITE"
+| where ActivityStatus == "Succeeded"
+| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+```
+
+## Delete VM exercise - Trigger an incident
+
+The Terraform configuration will create a specific scheduled rule to detect VM deletion following [this][4] exercise.
+
 ## Architecture
 
 Workspace architecture options and log analytics workspace dependency.
@@ -89,3 +134,5 @@ https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
+[3]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/4-analytics-rules
+[4]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/8-exercise-detect-threats

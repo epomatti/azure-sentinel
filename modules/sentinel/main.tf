@@ -15,21 +15,47 @@ resource "azurerm_sentinel_threat_intelligence_indicator" "custom" {
   depends_on = [azurerm_sentinel_log_analytics_workspace_onboarding.default]
 }
 
-# ### Data Connectors ###
-# resource "azurerm_sentinel_data_connector_office_365" "microsoft365" {
-#   name                       = "microsoft365"
-#   log_analytics_workspace_id = azurerm_sentinel_log_analytics_workspace_onboarding.default.workspace_id
+resource "azurerm_sentinel_alert_rule_scheduled" "vm" {
+  name                       = "Azure VM Deletion"
+  display_name               = "Azure VM Deletion"
+  description                = "A simple detection to alert when someone deletes Azure Virtual Machine."
+  log_analytics_workspace_id = azurerm_sentinel_log_analytics_workspace_onboarding.default.workspace_id
 
-#   exchange_enabled   = true
-#   sharepoint_enabled = true
-#   teams_enabled      = true
+  tactics  = ["Impact"]
+  severity = "Medium"
+  enabled  = true
 
-#   depends_on = [azurerm_sentinel_log_analytics_workspace_onboarding.default]
-# }
+  query = file("${path.module}/query.sql")
 
-# resource "azurerm_sentinel_data_connector_azure_active_directory" "entraid" {
-#   name                       = "entraid"
-#   log_analytics_workspace_id = azurerm_sentinel_log_analytics_workspace_onboarding.default.workspace_id
+  entity_mapping {
+    entity_type = "Account"
 
-#   depends_on = [azurerm_sentinel_log_analytics_workspace_onboarding.default]
-# }
+    field_mapping {
+      identifier  = "Name"
+      column_name = "Caller"
+    }
+  }
+
+  entity_mapping {
+    entity_type = "IP"
+
+    field_mapping {
+      identifier  = "Address"
+      column_name = "CallerIpAddress"
+    }
+  }
+
+  query_frequency = "PT5M"
+  query_period    = "PT5H"
+
+  incident_configuration {
+    create_incident = true
+
+    grouping {
+      enabled                 = true
+      reopen_closed_incidents = false
+    }
+  }
+
+  depends_on = [azurerm_sentinel_log_analytics_workspace_onboarding.default]
+}
