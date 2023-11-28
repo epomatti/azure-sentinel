@@ -144,8 +144,24 @@ net user theusernametoadd ThePassword1!
 net localgroup administrators theusernametoadd /add
 ```
 
+## CEF/SysLog
+
+One could use a [log forwarder][6] for CEF/Syslog data.
+
+## Custom queries
+
+From the [documentation][7]:
+
+> The query length should be between 1 and 10,000 characters and cannot contain `"search *"` or `"union *"`. You can use [user-defined functions][8] to overcome the query length limitation.
+
+
+
+
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
 [3]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/4-analytics-rules
 [4]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/8-exercise-detect-threats
 [5]: https://learn.microsoft.com/en-us/training/modules/configure-siem-security-operations-using-microsoft-sentinel/1-introduction
+[6]: https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama
+[7]: https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-custom
+[8]: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/functions/user-defined-functions
