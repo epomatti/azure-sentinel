@@ -132,7 +132,20 @@ https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-
 - Lighthouse
 - Workspace manager
 
+## General exercises
+
+Walkthrough [exercises][5] link.
+
+For example, it can detect privileged escalation:
+
+```ps1
+net user theusernametoadd /add
+net user theusernametoadd ThePassword1!
+net localgroup administrators theusernametoadd /add
+```
+
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
 [3]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/4-analytics-rules
 [4]: https://learn.microsoft.com/en-us/training/modules/analyze-data-in-sentinel/8-exercise-detect-threats
+[5]: https://learn.microsoft.com/en-us/training/modules/configure-siem-security-operations-using-microsoft-sentinel/1-introduction
