@@ -40,6 +40,13 @@ module "vm_windows" {
   size                = var.vm_windows_size
 }
 
+module "logicapp" {
+  source              = "./modules/logicapp"
+  workload            = local.workload
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+}
+
 module "sentinel" {
   source       = "./modules/sentinel"
   workspace_id = azurerm_log_analytics_workspace.default.id
