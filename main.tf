@@ -7,24 +7,20 @@ terraform {
   }
 }
 
-locals {
-  workload = "healthcare"
-}
-
 resource "azurerm_resource_group" "default" {
-  name     = "rg-${local.workload}"
+  name     = "rg-${var.workload}"
   location = var.location
 }
 
 module "vnet" {
   source              = "./modules/vnet"
-  workload            = local.workload
+  workload            = var.workload
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
 }
 
 resource "azurerm_log_analytics_workspace" "default" {
-  name                = "log-${local.workload}2"
+  name                = "log-${var.workload}"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   sku                 = "PerGB2018"
@@ -33,19 +29,19 @@ resource "azurerm_log_analytics_workspace" "default" {
 
 module "vm_windows" {
   source              = "./modules/vm/windows"
-  workload            = local.workload
+  workload            = var.workload
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   subnet_id           = module.vnet.subnet_id
   size                = var.vm_windows_size
 }
 
-module "logicapp" {
-  source              = "./modules/logicapp"
-  workload            = local.workload
-  resource_group_name = azurerm_resource_group.default.name
-  location            = azurerm_resource_group.default.location
-}
+# module "logicapp" {
+#   source              = "./modules/logicapp"
+#   workload            = local.workload
+#   resource_group_name = azurerm_resource_group.default.name
+#   location            = azurerm_resource_group.default.location
+# }
 
 module "sentinel" {
   source       = "./modules/sentinel"

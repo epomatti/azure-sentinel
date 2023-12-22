@@ -3,6 +3,10 @@ variable "location" {
   default = "eastus2"
 }
 
+variable "workload" {
+  type = string
+}
+
 variable "threat_intelligence_indicator_pattern" {
   type = string
 }
