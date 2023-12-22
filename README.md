@@ -160,7 +160,14 @@ From the [documentation][7]:
 
 > The query length should be between 1 and 10,000 characters and cannot contain `"search *"` or `"union *"`. You can use [user-defined functions][8] to overcome the query length limitation.
 
+## Playbooks
 
+You can implement [Playbooks][9] with Sentinel:
+
+1. Create an automation rule
+2. Create a playbook
+3. Add actions to a playbook
+4. Attach a playbook to an automation rule or an analytics rule to automate threat response
 
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
@@ -171,3 +178,4 @@ From the [documentation][7]:
 [6]: https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama
 [7]: https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-custom
 [8]: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/functions/user-defined-functions
+[9]: https://learn.microsoft.com/en-us/azure/sentinel/tutorial-respond-threats-playbook?tabs=LAC%2Cincidents

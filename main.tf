@@ -38,7 +38,7 @@ module "vm_windows" {
 
 # module "logicapp" {
 #   source              = "./modules/logicapp"
-#   workload            = local.workload
+#   workload            = var.workload
 #   resource_group_name = azurerm_resource_group.default.name
 #   location            = azurerm_resource_group.default.location
 # }
