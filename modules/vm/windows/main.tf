@@ -40,7 +40,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2022-datacenter"
+    sku       = "2022-datacenter-g2"
     version   = "latest"
   }
 }
@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine_extension" "azure_monitor_agent" {
   virtual_machine_id         = azurerm_windows_virtual_machine.windows.id
   publisher                  = "Microsoft.Azure.Monitor"
   type                       = "AzureMonitorWindowsAgent"
-  type_handler_version       = "1.21"
+  type_handler_version       = "1.22"
   auto_upgrade_minor_version = true
   automatic_upgrade_enabled  = true
 }

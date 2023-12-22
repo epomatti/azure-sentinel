@@ -1,5 +1,11 @@
 # Azure Sentinel
 
+Set the variables:
+
+```sh
+cp config/template.tfvars .auto.tfvars
+```
+
 Start the environment to work with Sentinel:
 
 ```sh
