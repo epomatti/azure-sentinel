@@ -169,6 +169,39 @@ You can implement [Playbooks][9] with Sentinel:
 3. Add actions to a playbook
 4. Attach a playbook to an automation rule or an analytics rule to automate threat response
 
+## Terminology
+
+### General
+
+General information dashboard, logs, and search.
+
+### Threat management
+
+- Incidents: Registered incidents
+- Workbooks: Documentation in markdown with integrated queries and metrics
+- Hunting: Workflow centered around hypothesis to seek out undetected threats and malicious behavior
+- Notebooks: Jupyter notebooks integrated with Azure Machine Learning.
+- Entity behavior: Tool to search for accounts, hosts, IP addresses, IoT devices or Azure resources. Works best with UEBA.
+- Threat intelligence: Register indicators (domains, IPs, files, URLs). Data connectors and feeds can be used to import indicators. These indicators can be used in queries and rules.
+- MITRE ATT&ACK (Preview): Integrated dashboard showing associated with rules and anomalies.
+
+### Content management
+
+- Content hub: Solutions setup
+- Repositories: Bring your own solutions from GH, ADO, etc.
+- Community: General community integrated page
+
+### Configuration
+
+- Workspace manager (Preview): Enables users to centrally manage multiple Microsoft Sentinel workspaces within one or more Azure tenants
+- Data connectors: Same as content hub?
+- Analytics: Create and manage rules (Scheduled, NRT, Microsoft) that query data, creates alerts and register incidents, and associated automation rules.
+- Watchlist: Investigate threats and respond to incidents quickly with fast import of IP addresses, file hashes, etc. from csv files.
+- Automation: Automation rules are actions to take when an alert, incident or entity trigger happens.
+    - General (Actions): Change information of the trigger
+    - Playbooks (Action): Logic Apps
+- Settings: General settings of the Sentinel account.
+
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
