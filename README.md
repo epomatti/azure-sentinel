@@ -202,6 +202,10 @@ General information dashboard, logs, and search.
     - Playbooks (Action): Logic Apps
 - Settings: General settings of the Sentinel account.
 
+## Threat management
+
+https://learn.microsoft.com/en-us/azure/sentinel/bookmarks#exploring-bookmarks-in-the-investigation-graph
+
 ## Sample queries
 
 Failed login attempts (4625) to Windows machines:
