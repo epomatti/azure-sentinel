@@ -202,6 +202,20 @@ General information dashboard, logs, and search.
     - Playbooks (Action): Logic Apps
 - Settings: General settings of the Sentinel account.
 
+## Sample queries
+
+Failed login attempts (4625) to Windows machines:
+
+```sql
+let timeframe = 3d;
+SecurityEvent
+| where TimeGenerated > ago(1d)
+| where AccountType == 'User' and EventID == 4625
+| summarize failed_login_attempts=count(), latest_failed_login=arg_max(TimeGenerated, Account) by Account
+| where failed_login_attempts > 5
+| project-away Account1
+```
+
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
