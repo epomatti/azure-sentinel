@@ -36,6 +36,17 @@ module "vm_windows" {
   size                = var.vm_windows_size
 }
 
+### Monitor (Data collection rules) ###
+module "monitor" {
+  source              = "./modules/monitor"
+  resource_group_name = azurerm_resource_group.default.name
+  location            = azurerm_resource_group.default.location
+  workload            = var.workload
+
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.default.id
+  vm_id                      = module.vm_windows.vm_id
+}
+
 # module "logicapp" {
 #   source              = "./modules/logicapp"
 #   workload            = var.workload
