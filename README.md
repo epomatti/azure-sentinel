@@ -206,6 +206,14 @@ General information dashboard, logs, and search.
 
 https://learn.microsoft.com/en-us/azure/sentinel/bookmarks#exploring-bookmarks-in-the-investigation-graph
 
+## CEF
+
+TODO: CEF implementation
+
+https://learn.microsoft.com/en-us/azure/sentinel/connect-common-event-format
+https://learn.microsoft.com/en-us/azure/sentinel/connect-log-forwarder?tabs=rsyslog
+https://learn.microsoft.com/en-us/azure/sentinel/connect-cef-ama
+
 ## Sample queries
 
 Failed login attempts (4625) to Windows machines:
