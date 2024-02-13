@@ -18,3 +18,7 @@ variable "threat_intelligence_indicator_validate_from_utc" {
 variable "vm_windows_size" {
   type = string
 }
+
+variable "create_vm_windows" {
+  type = bool
+}

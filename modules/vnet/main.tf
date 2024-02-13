@@ -12,6 +12,13 @@ resource "azurerm_subnet" "default" {
   address_prefixes     = ["10.0.0.0/24"]
 }
 
+resource "azurerm_subnet" "app_gateway" {
+  name                 = "AppGateway-WAF-Subnet"
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.default.name
+  address_prefixes     = ["10.0.50.0/24"]
+}
+
 resource "azurerm_network_security_group" "default" {
   name                = "nsg-${var.workload}"
   location            = var.location
