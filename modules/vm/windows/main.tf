@@ -45,12 +45,12 @@ resource "azurerm_windows_virtual_machine" "windows" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "azure_monitor_agent" {
-  name                       = "AzureMonitorWindowsAgent"
-  virtual_machine_id         = azurerm_windows_virtual_machine.windows.id
-  publisher                  = "Microsoft.Azure.Monitor"
-  type                       = "AzureMonitorWindowsAgent"
-  type_handler_version       = "1.21" # TODO: Shoul be 1.22 but it is failing
-  auto_upgrade_minor_version = true
-  automatic_upgrade_enabled  = true
-}
+# resource "azurerm_virtual_machine_extension" "azure_monitor_agent" {
+#   name                       = "AzureMonitorWindowsAgent"
+#   virtual_machine_id         = azurerm_windows_virtual_machine.windows.id
+#   publisher                  = "Microsoft.Azure.Monitor"
+#   type                       = "AzureMonitorWindowsAgent"
+#   type_handler_version       = "1.23" # TODO: Should be 1.22 but it is failing
+#   auto_upgrade_minor_version = true
+#   automatic_upgrade_enabled  = true
+# }

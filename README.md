@@ -228,6 +228,14 @@ SecurityEvent
 | project-away Account1
 ```
 
+## WAF
+
+Application Gateway V2 + WAF will be provisioned and can be integrated with the [WAF connector for Sentinel][10].
+
+Steps should follow as:
+1. Enable log analytics (via Diagnostic Settings)
+2. Install the data connector
+
 
 [1]: https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/
 [2]: https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/3-collect-sysmon-event-logs
@@ -238,3 +246,4 @@ SecurityEvent
 [7]: https://learn.microsoft.com/en-us/azure/sentinel/detect-threats-custom
 [8]: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/functions/user-defined-functions
 [9]: https://learn.microsoft.com/en-us/azure/sentinel/tutorial-respond-threats-playbook?tabs=LAC%2Cincidents
+[10]: https://learn.microsoft.com/en-us/azure/web-application-firewall/waf-sentinel
