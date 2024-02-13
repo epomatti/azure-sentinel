@@ -22,3 +22,7 @@ variable "vm_windows_size" {
 variable "create_vm_windows" {
   type = bool
 }
+
+variable "create_waf" {
+  type = bool
+}

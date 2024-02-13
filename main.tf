@@ -38,12 +38,14 @@ module "vm_windows" {
 }
 
 module "waf" {
+  count               = var.create_waf ? 1 : 0
   source              = "./modules/waf"
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
 }
 
 module "app_gateway" {
+  count               = var.create_waf ? 1 : 0
   source              = "./modules/agw"
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
