@@ -50,7 +50,7 @@ module "app_gateway" {
   resource_group_name = azurerm_resource_group.default.name
   location            = azurerm_resource_group.default.location
   subnet_id           = module.vnet.app_gateway_subnet_id
-  firewall_policy_id  = module.waf.policy_id
+  firewall_policy_id  = module.waf[0].policy_id
   vnet_name           = module.vnet.vnet_name
 }
 
