@@ -48,8 +48,8 @@ resource "azurerm_sentinel_alert_rule_scheduled" "vm" {
   query_frequency = "PT5M"
   query_period    = "PT5H"
 
-  incident_configuration {
-    create_incident = true
+  incident {
+    create_incident_enabled = true
 
     grouping {
       enabled                 = true
