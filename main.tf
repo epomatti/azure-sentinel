@@ -62,6 +62,13 @@ module "sentinel" {
   threat_intelligence_indicator_validate_from_utc = var.threat_intelligence_indicator_validate_from_utc
 }
 
+module "kubernetes" {
+  source              = "./modules/kubernetes"
+  location            = azurerm_resource_group.default.location
+  resource_group_name = azurerm_resource_group.default.name
+  vm_size             = var.kubernetes_vm_size
+}
+
 ### Monitor (Data collection rules) ###
 # module "monitor" {
 #   source              = "./modules/monitor"

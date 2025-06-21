@@ -30,3 +30,7 @@ variable "create_vm_windows" {
 variable "create_waf" {
   type = bool
 }
+
+variable "kubernetes_vm_size" {
+  type = string
+}
